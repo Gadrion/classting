@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/classting/static/css/main.d05ab342.css",
-    "main.js": "/classting/static/js/main.a692a60e.js",
+    "main.js": "/classting/static/js/main.40836b8b.js",
     "static/js/787.6477b8a8.chunk.js": "/classting/static/js/787.6477b8a8.chunk.js",
     "index.html": "/classting/index.html",
     "main.d05ab342.css.map": "/classting/static/css/main.d05ab342.css.map",
-    "main.a692a60e.js.map": "/classting/static/js/main.a692a60e.js.map",
+    "main.40836b8b.js.map": "/classting/static/js/main.40836b8b.js.map",
     "787.6477b8a8.chunk.js.map": "/classting/static/js/787.6477b8a8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d05ab342.css",
-    "static/js/main.a692a60e.js"
+    "static/js/main.40836b8b.js"
   ]
 }
