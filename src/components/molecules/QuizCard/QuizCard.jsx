@@ -11,7 +11,7 @@ import FormLabel from '@mui/material/FormLabel';
 
 const QuizCard = ({
   category, question,
-  quizAnswers, selectAnswerValue, onChange,
+  quizAnswers, selectAnswerValue, onChange, disabled,
 }) => (
   <Card sx={{ minWidth: 275 }}>
     <CardContent>
@@ -22,7 +22,7 @@ const QuizCard = ({
         {question}
       </Typography>
       <div>
-        <FormControl component="fieldset">
+        <FormControl component="fieldset" disabled={disabled}>
           <FormLabel component="legend">보기</FormLabel>
           <RadioGroup
             aria-label="example"
@@ -46,6 +46,7 @@ QuizCard.propTypes = {
   quizAnswers: PropTypes.instanceOf(Array).isRequired,
   selectAnswerValue: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
 }
 
 export default QuizCard;
