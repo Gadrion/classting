@@ -18,7 +18,7 @@ const QuizCard = ({
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         {category}
       </Typography>
-      <Typography variant="h5" component="div" sx={{ width: 900, marginBottom: '20px', marginTop: '10px' }}>
+      <Typography variant="h5" component="div" sx={{ marginBottom: '20px', marginTop: '10px' }}>
         {question}
       </Typography>
       <div>

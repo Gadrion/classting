@@ -10,15 +10,15 @@ import { PageWrapper } from './QuizPageStyled';
 
 const QuizPage = ({
   quizPageStatus, onClick, isLoading, quizDataList, quizAnswerSubmit,
-  hour, min, sec, correctCount,
+  hour, min, sec, correctCount, setRef, isVertical,
 }) => (
-  <PageWrapper>
+  <PageWrapper ref={setRef} isVertical={isVertical}>
     {isLoading && <LoadingButton loading={isLoading} />}
     {quizPageStatus === 'ready' && (
       <Button variant="contained" onClick={onClick('isQuizStart')}>Quiz 풀기</Button>
     )}
     {quizPageStatus === 'start' && (
-      <QuizStepper quizDataList={quizDataList} quizAnswerSubmit={quizAnswerSubmit} />
+      <QuizStepper quizDataList={quizDataList} quizAnswerSubmit={quizAnswerSubmit} isVertical={isVertical} />
     )}
     {quizPageStatus === 'end' && (
       <div>
@@ -41,6 +41,8 @@ QuizPage.propTypes = {
   min: PropTypes.number.isRequired,
   sec: PropTypes.number.isRequired,
   correctCount: PropTypes.number.isRequired,
+  setRef: PropTypes.func.isRequired,
+  isVertical: PropTypes.bool.isRequired,
 }
 
 export default withContainers([QuizTimeClockContainer, QuizPageContainer], QuizPage);

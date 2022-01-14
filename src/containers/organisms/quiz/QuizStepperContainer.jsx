@@ -20,10 +20,6 @@ class QuizStepperContainer extends React.Component {
     }
   }
 
-  checkQuizAnswer = () => {
-
-  }
-
   onClick = type => () => {
     const { activeStep, selectAnswerValue } = this.state;
     switch (type) {

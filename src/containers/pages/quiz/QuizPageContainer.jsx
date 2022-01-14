@@ -4,11 +4,16 @@ import { Actions } from 'store/actionCreators';
 import { connect } from 'react-redux';
 
 class QuizPageContainer extends React.Component {
+  wrapperRef = null;
+
+  resizeObserver;
+
   state = {
     quizPageStatus: 'ready', // start, end
     isLoading: false,
     quizDataList: [],
     correctCount: 0,
+    isVertical: false,
   };
 
   componentDidUpdate(prevProps) {
@@ -18,6 +23,10 @@ class QuizPageContainer extends React.Component {
     if (prevNewQuiz !== newQuiz) {
       this.initData();
     }
+  }
+  
+  componentWillUnmount() {
+    this.resizeObserver.unobserve(this.wrapperRef);
   }
 
   initData = () => {
@@ -70,6 +79,23 @@ class QuizPageContainer extends React.Component {
       }
       default:
         break;
+    }
+  }
+
+  setRef = ref => {
+    console.log('ref', ref);
+    if (ref) {
+      this.wrapperRef = ref;
+      this.resizeObserver = new ResizeObserver(entry => {
+        const { isVertical: stateIsVertical } = this.state;
+        const isVertical = entry[0].contentRect.width < 600;
+        if (stateIsVertical !== isVertical) {
+          this.setState({ isVertical });
+        }
+        
+      });
+
+      this.resizeObserver.observe(this.wrapperRef);
     }
   }
 
