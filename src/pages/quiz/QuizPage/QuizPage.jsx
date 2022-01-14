@@ -5,7 +5,7 @@ import { QuizPageContainer } from 'containers/pages';
 import { QuizTimeClockContainer } from 'containers/organisms';
 import Button from '@mui/material/Button';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { QuizStepper, QuizTimeClock } from 'components/organisms';
+import { QuizStepper, QuizResult } from 'components/organisms';
 import { PageWrapper } from './QuizPageStyled';
 
 const QuizPage = ({
@@ -21,12 +21,14 @@ const QuizPage = ({
       <QuizStepper quizDataList={quizDataList} quizAnswerSubmit={quizAnswerSubmit} isVertical={isVertical} />
     )}
     {quizPageStatus === 'end' && (
-      <div>
-        걸린 시간<QuizTimeClock hour={hour} min={min} sec={sec} />
-        {`정답 개수: ${correctCount}`}
-        {`오답 개수: ${quizDataList.length - correctCount}`}
-        <Button variant="contained" onClick={onClick('isQuizStart')}>다시 Quiz 풀기</Button>
-      </div>
+      <QuizResult
+        hour={hour}
+        min={min}
+        sec={sec}
+        correctCount={correctCount}
+        inCorrectCount={quizDataList.length - correctCount}
+        onClick={onClick('isQuizStart')}
+      />
     )}
   </PageWrapper>
 )

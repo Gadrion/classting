@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -8,9 +8,6 @@ export const PageWrapper = styled.div`
   & > div {
     height: 100%;
     display: flex;
-    ${props => !props.isVertical && css`
-      flex-direction: column;  
-    `}
     justify-content: center;
   }
 `;

@@ -9,7 +9,7 @@ class QuizPageContainer extends React.Component {
   resizeObserver;
 
   state = {
-    quizPageStatus: 'ready', // start, end
+    quizPageStatus: 'ready', // ready, start, end
     isLoading: false,
     quizDataList: [],
     correctCount: 0,
@@ -83,12 +83,11 @@ class QuizPageContainer extends React.Component {
   }
 
   setRef = ref => {
-    console.log('ref', ref);
     if (ref) {
       this.wrapperRef = ref;
       this.resizeObserver = new ResizeObserver(entry => {
         const { isVertical: stateIsVertical } = this.state;
-        const isVertical = entry[0].contentRect.width < 600;
+        const isVertical = entry[0].contentRect.width < 800;
         if (stateIsVertical !== isVertical) {
           this.setState({ isVertical });
         }
