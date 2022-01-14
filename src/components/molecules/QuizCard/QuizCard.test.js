@@ -19,7 +19,7 @@ afterEach(() => {
   container = null;
 });
 
-it("렌더 테스트", () => {
+it("text 렌더 테스트", () => {
   const quizCardData = {
     category: 'test',
     question: 'teqqqq',
