@@ -8,15 +8,16 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import StepContent from '@mui/material/StepContent';
+import { QuizStepperWrapper } from './QuizStepperStyled';
 
 const QuizStepper = ({
   quizDataList, activeStep, onClick, onChange,
   selectAnswerValue, quizStatus, convertLang,
   isResultOpen,isVertical,
 }) => (
-  <div>
+  <QuizStepperWrapper>
     <div>
-      <Stepper activeStep={activeStep} orientation={isVertical ? 'vertical' : 'horizontal'}>
+      <Stepper activeStep={activeStep} orientation={isVertical ? 'vertical' : 'horizontal'} sx={!isVertical && { minWidth: 800 }}>
         {quizDataList.map((quizData, index) => (
             <Step key={`${quizData.category}_${index + 1}`} completed={(typeof quizData.isCorrect !== 'undefined')}>
               <StepLabel error={(typeof quizData.isCorrect !== 'undefined') && !quizData.isCorrect}>
@@ -66,7 +67,7 @@ const QuizStepper = ({
       title="문제 정답"
       description={quizDataList[activeStep].isCorrect ? '정답입니다.' : '오답입니다.'}
     />
-  </div>
+  </QuizStepperWrapper>
 )
 
 QuizStepper.propTypes = {
