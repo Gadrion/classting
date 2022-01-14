@@ -13,6 +13,7 @@ export const QuizResulClockWrapper = styled.div`
 
 export const QuizResulChartWrapper = styled.div`
   margin: 25px 0;
+  min-height: 400px;
 
   & > div:first-child {
     font-size: 35px;

@@ -17,7 +17,7 @@ const QuizStepper = ({
 }) => (
   <QuizStepperWrapper>
     <div>
-      <Stepper activeStep={activeStep} orientation={isVertical ? 'vertical' : 'horizontal'} sx={!isVertical && { minWidth: 800 }}>
+      <Stepper activeStep={activeStep} orientation={isVertical ? 'vertical' : 'horizontal'} sx={{ minWidth: isVertical ? 0 : 800 }}>
         {quizDataList.map((quizData, index) => (
             <Step key={`${quizData.category}_${index + 1}`} completed={(typeof quizData.isCorrect !== 'undefined')}>
               <StepLabel error={(typeof quizData.isCorrect !== 'undefined') && !quizData.isCorrect}>

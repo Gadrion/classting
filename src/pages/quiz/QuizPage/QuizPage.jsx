@@ -12,7 +12,7 @@ const QuizPage = ({
   quizPageStatus, onClick, isLoading, quizDataList, quizAnswerSubmit,
   hour, min, sec, correctCount, setRef, isVertical,
 }) => (
-  <PageWrapper ref={setRef} isVertical={isVertical}>
+  <PageWrapper ref={setRef} isVertical={isVertical} quizPageStatus={quizPageStatus}>
     {isLoading && <LoadingButton loading={isLoading} />}
     {quizPageStatus === 'ready' && (
       <Button variant="contained" onClick={onClick('isQuizStart')}>Quiz 풀기</Button>

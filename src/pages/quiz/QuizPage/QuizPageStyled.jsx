@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -7,7 +7,9 @@ export const PageWrapper = styled.div`
   height: 100%;
   & > div {
     height: 100%;
-    display: flex;
-    justify-content: center;
+    ${props => (!props.isVertical || props.quizPageStatus === 'end') && css`  
+      display: flex;
+      justify-content: center;
+    `}
   }
 `;
