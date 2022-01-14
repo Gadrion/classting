@@ -1,5 +1,5 @@
 {
-  "homepage" : "https://Gadrion.github.io/classting/",
+  "homepage": "https://Gadrion.github.io/classting/",
   "name": "classting",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +10,8 @@
     "@mui/lab": "^5.0.0-alpha.64",
     "@mui/material": "^5.2.8",
     "@mui/styled-engine-sc": "^5.1.0",
+    "@nivo/bar": "^0.79.1",
+    "@nivo/core": "^0.79.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
