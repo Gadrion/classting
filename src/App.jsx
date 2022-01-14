@@ -1,11 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter, Route, Routes, Navigate } from 'react-router-dom';
 import store from 'store';
 import { MainPage, QuizPage } from 'pages';
 
 const App = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Provider store={store}>
       <Routes>
         <Route path="/main" element={<MainPage />} />
@@ -16,7 +16,7 @@ const App = () => (
         />
       </Routes>
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default App;
