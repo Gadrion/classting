@@ -45,7 +45,11 @@ class QuizTimeClockContainer extends React.Component {
   }
 
   clockTimer = isInit => {
-    if (!isInit) {
+    if (isInit) {
+      this.hour = 0;
+      this.min = 0;
+      this.sec = 0;
+    } else {
       const currentSec = this.sec + 1;
       if (currentSec === 60) {
         this.carryMin();

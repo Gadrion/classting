@@ -1,6 +1,18 @@
 import { getNewQuiz } from 'store/modules/quiz/newQuizModule';
 import { ApiResult } from 'util/function/SagaUtil';
 
+const convertEscase = string => {
+  let result = '';
+  result = string.replace(/&lt;/g, '<');
+  result = result.replace(/&gt;/g,'>');
+  result = result.replace(/&nbsp;/g,' ');
+  result = result.replace(/&amp;/g, '&');
+  result = result.replace(/&quot;/g, '"');
+  result = result.replace(/&#039;/g, '\'');
+
+  return result;
+}
+
 const shuffle = array => {
   const result = array;
 
@@ -13,10 +25,18 @@ const shuffle = array => {
   return result;
 }
 
-const convertQuizData = dataList => dataList.map(data => ({
-  ...data,
-  quizAnswers: shuffle([data.correct_answer, ...data.incorrect_answers]),
-}));
+const convertQuizData = dataList => dataList.map(data => {
+  const convertEscaseQuestion = convertEscase(data.question);
+  const convertEscaseCorrectAnswer = convertEscase(data.correct_answer);
+  const convertEscaseIncorrectAnswers = data.incorrect_answers.map(answer => convertEscase(answer));
+  
+  return ({
+    ...data,
+    question: convertEscaseQuestion,
+    correct_answer: convertEscaseCorrectAnswer,
+    quizAnswers: shuffle([convertEscaseCorrectAnswer, ...convertEscaseIncorrectAnswers]),
+  });
+});
 
 export function* getNewQuizAction() {
   const { isFail, payload } = yield ApiResult(getNewQuiz({}));
